@@ -1,5 +1,4 @@
 import time
-import os
 
 from more_itertools import sample
 

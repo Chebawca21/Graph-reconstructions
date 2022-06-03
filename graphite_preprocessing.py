@@ -1,7 +1,6 @@
 import numpy as np
 import scipy.sparse as sp
 import networkx as nx
-import itertools
 
 
 def sparse_to_tuple(sparse_mx):
@@ -206,48 +205,3 @@ def mask_test_edges(adj):
 
     # NOTE: these edge lists only contain single direction of edge!
     return adj_train, train_edges, val_edges, val_edges_false, test_edges, test_edges_false
-
-
-def read_siemens():
-    As = []
-    Xs = []
-
-    for i in range(143, 2000):
-        nodes = []
-        prefix = "Successful" if i >= 143 else "Unsuccessful"
-        with open(prefix + "/nodes_case" + str(i) + ".txt") as f:
-            nodes = f.read().splitlines()
-            nodes = [int(n) for n in nodes]
-        with open(prefix + "/edges_case" + str(i) + ".txt") as f:
-            edges = f.read().splitlines()
-            edges = [n.strip('[]').strip().split(',') for n in edges]
-            edges = [(int(n[0]), int(n[1])) for n in edges]
-
-        A = np.zeros((245, 245))
-        for edge in edges:
-          v1 = edge[0]
-          v2 = edge[1]
-          A[v1, v2] = 1
-          A[v2, v1] = 1
-        X = np.identity(245)
-        indices = np.array([x for x in itertools.product(range(7), range(35))])
-        deg = np.sum(A, axis = 1, keepdims = True)
-        ones = np.ones((245, 1))
-        X = np.hstack((X, ones))
-
-        A = sp.csr_matrix(A)
-        X = sp.csr_matrix(X)
-
-        As.append(A)
-        Xs.append(X)
-
-    return As, Xs, np.zeros((len(As), 2))
-
-def load_siemens():
-    As, Xs, labels = read_siemens()    
-    A_orig = [sparse_to_tuple(A + sp.eye(A.shape[0])) for A in As]
-    A = [preprocess_graph(A) for A in As]
-    X = [sparse_to_tuple(X.tocoo()) for X in Xs]
-
-    return A_orig, A, X
-
