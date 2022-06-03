@@ -3,17 +3,23 @@
 # Instalacja
 Po sklonowaniu tworzenie środowiska conda
 
-<p><code>$ conda env create -f environment.yml<br>
-         $ conda activate zzsn-grupa29</code></p>
+```
+$ conda env create -f environment.yml
+$ conda activate zzsn-grupa29
+```
 
 # Uruchomienie
 Uruchomienie generacji grafów ze wszystkich 6 "rodzin"
 
-<p><code>$ python data.py</code><p>
+```
+$ python data.py
+```
 
 <br>
 
 Uruchomienie uczenia wszystkich 4 modeli dla każdego zbioru grafów
 
-<p><code>$ python test.py</code><p>
+```
+$ python test.py
+```
 Zmiana parametrów każdego modelu jest możliwa poprzez zmianę parametrów funkcji
