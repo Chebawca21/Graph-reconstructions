@@ -20,7 +20,7 @@ def scale_graph(graph):
 
 MAXNODES = 20
 
-def graphite_train(learning_rate=0.01, epochs=3, hidden1=32, hidden2=16, dropout=0., dataset="erdos_renyi", features=0, seed=21, vae=1):
+def graphite_train(learning_rate=0.01, epochs=3, hidden1=32, hidden2=16, hidden3=32, dropout=0., auto_scalar=0., dataset="erdos_renyi", features=0, seed=21, vae=1):
 
     # Settings
     tf.disable_v2_behavior()
@@ -57,7 +57,7 @@ def graphite_train(learning_rate=0.01, epochs=3, hidden1=32, hidden2=16, dropout
     num_features = features[2][1]
     features_nonzero = features[1].shape[0]
 
-    model = GCNModelVAE(placeholders, num_features, num_nodes, features_nonzero, hidden1, hidden2, vae)
+    model = GCNModelFeedback(placeholders, num_features, num_nodes, features_nonzero, hidden1, hidden2, hidden3, vae, auto_scalar)
 
     # Count average values for pos_weight and norm
     pos_weight = 0.0
