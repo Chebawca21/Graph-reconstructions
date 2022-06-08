@@ -2,6 +2,7 @@ from gae_train import gae_train
 from graphite_train import graphite_train
 
 seeds = [21]
+epochs = 100
 
 gae_er, gae_en, gae_rr, gae_rg, gae_pt, gae_ba = [], [], [], [], [], []
 vgae_er, vgae_en, vgae_rr, vgae_rg, vgae_pt, vgae_ba = [], [], [], [], [], []
@@ -9,33 +10,33 @@ graphite_ae_er, graphite_ae_en, graphite_ae_rr, graphite_ae_rg, graphite_ae_pt, 
 graphite_vae_er, graphite_vae_en, graphite_vae_rr, graphite_vae_rg, graphite_vae_pt, graphite_vae_ba = [], [], [], [], [], []
 
 for seed in seeds:
-    gae_er.append(gae_train(epochs=100, model="gcn_ae", dataset="erdos_renyi", seed=seed))
-    gae_en.append(gae_train(epochs=100, model="gcn_ae", dataset="ego_net", seed=seed))
-    gae_rr.append(gae_train(epochs=100, model="gcn_ae", dataset="random_regular", seed=seed))
-    gae_rg.append(gae_train(epochs=100, model="gcn_ae", dataset="random_geometric", seed=seed))
-    gae_pt.append(gae_train(epochs=100, model="gcn_ae", dataset="random_powerlaw_tree", seed=seed))
-    gae_ba.append(gae_train(epochs=100, model="gcn_ae", dataset="barabasi_albert", seed=seed))
+    gae_er.append(gae_train(epochs=epochs, model="gcn_ae", dataset="erdos_renyi", seed=seed))
+    gae_en.append(gae_train(epochs=epochs, model="gcn_ae", dataset="ego_net", seed=seed))
+    gae_rr.append(gae_train(epochs=epochs, model="gcn_ae", dataset="random_regular", seed=seed))
+    gae_rg.append(gae_train(epochs=epochs, model="gcn_ae", dataset="random_geometric", seed=seed))
+    gae_pt.append(gae_train(epochs=epochs, model="gcn_ae", dataset="random_powerlaw_tree", seed=seed))
+    gae_ba.append(gae_train(epochs=epochs, model="gcn_ae", dataset="barabasi_albert", seed=seed))
 
-    vgae_er.append(gae_train(epochs=100, model="gcn_vae", dataset="erdos_renyi", seed=seed))
-    vgae_en.append(gae_train(epochs=100, model="gcn_vae", dataset="ego_net", seed=seed))
-    vgae_rr.append(gae_train(epochs=100, model="gcn_vae", dataset="random_regular", seed=seed))
-    vgae_rg.append(gae_train(epochs=100, model="gcn_vae", dataset="random_geometric", seed=seed))
-    vgae_pt.append(gae_train(epochs=100, model="gcn_vae", dataset="random_powerlaw_tree", seed=seed))
-    vgae_ba.append(gae_train(epochs=100, model="gcn_vae", dataset="barabasi_albert", seed=seed))
+    vgae_er.append(gae_train(epochs=epochs, model="gcn_vae", dataset="erdos_renyi", seed=seed))
+    vgae_en.append(gae_train(epochs=epochs, model="gcn_vae", dataset="ego_net", seed=seed))
+    vgae_rr.append(gae_train(epochs=epochs, model="gcn_vae", dataset="random_regular", seed=seed))
+    vgae_rg.append(gae_train(epochs=epochs, model="gcn_vae", dataset="random_geometric", seed=seed))
+    vgae_pt.append(gae_train(epochs=epochs, model="gcn_vae", dataset="random_powerlaw_tree", seed=seed))
+    vgae_ba.append(gae_train(epochs=epochs, model="gcn_vae", dataset="barabasi_albert", seed=seed))
 
-    graphite_ae_er.append(graphite_train(epochs=100, vae=0, dataset="erdos_renyi", seed=seed))
-    graphite_ae_en.append(graphite_train(epochs=100, vae=0, dataset="ego_net", seed=seed))
-    graphite_ae_rr.append(graphite_train(epochs=100, vae=0, dataset="random_regular", seed=seed))
-    graphite_ae_rg.append(graphite_train(epochs=100, vae=0, dataset="random_geometric", seed=seed))
-    graphite_ae_pt.append(graphite_train(epochs=100, vae=0, dataset="random_powerlaw_tree", seed=seed))
-    graphite_ae_ba.append(graphite_train(epochs=100, vae=0, dataset="barabasi_albert", seed=seed))
+    graphite_ae_er.append(graphite_train(epochs=epochs, vae=0, dataset="erdos_renyi", seed=seed))
+    graphite_ae_en.append(graphite_train(epochs=epochs, vae=0, dataset="ego_net", seed=seed))
+    graphite_ae_rr.append(graphite_train(epochs=epochs, vae=0, dataset="random_regular", seed=seed))
+    graphite_ae_rg.append(graphite_train(epochs=epochs, vae=0, dataset="random_geometric", seed=seed))
+    graphite_ae_pt.append(graphite_train(epochs=epochs, vae=0, dataset="random_powerlaw_tree", seed=seed))
+    graphite_ae_ba.append(graphite_train(epochs=epochs, vae=0, dataset="barabasi_albert", seed=seed))
 
-    graphite_vae_er.append(graphite_train(epochs=100, vae=1, dataset="erdos_renyi", seed=seed))
-    graphite_vae_en.append(graphite_train(epochs=100, vae=1, dataset="ego_net", seed=seed))
-    graphite_vae_rr.append(graphite_train(epochs=100, vae=1, dataset="random_regular", seed=seed))
-    graphite_vae_rg.append(graphite_train(epochs=100, vae=1, dataset="random_geometric", seed=seed))
-    graphite_vae_pt.append(graphite_train(epochs=100, vae=1, dataset="random_powerlaw_tree", seed=seed))
-    graphite_vae_ba.append(graphite_train(epochs=100, vae=1, dataset="barabasi_albert", seed=seed))
+    graphite_vae_er.append(graphite_train(epochs=epochs, vae=1, dataset="erdos_renyi", seed=seed))
+    graphite_vae_en.append(graphite_train(epochs=epochs, vae=1, dataset="ego_net", seed=seed))
+    graphite_vae_rr.append(graphite_train(epochs=epochs, vae=1, dataset="random_regular", seed=seed))
+    graphite_vae_rg.append(graphite_train(epochs=epochs, vae=1, dataset="random_geometric", seed=seed))
+    graphite_vae_pt.append(graphite_train(epochs=epochs, vae=1, dataset="random_powerlaw_tree", seed=seed))
+    graphite_vae_ba.append(graphite_train(epochs=epochs, vae=1, dataset="barabasi_albert", seed=seed))
 
 print("\n\n")
 print("======================================")
